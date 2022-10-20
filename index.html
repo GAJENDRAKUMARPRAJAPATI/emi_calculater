@@ -47,6 +47,24 @@
             margin-top: 2vmax;
         }
     </style>
+    <script>
+        function AmountChanged(){
+            document.getElementById("txtAmount").value =document.getElementById("rangeAmount").value;
+        }
+        function YearChanged(){
+            document.getElementById("txtYear").value =document.getElementById("rangeYear").value;
+        }
+        function RateChanged(){
+            document.getElementById("txtRate").value =document.getElementById("rangeRate").value;
+        }
+        function CalculateClick(){
+            var P = parseInt(document.getElementById("txtAmount").value);
+            var r = parseInt(document.getElementById("txtRate").value)/12/100;
+            var n = parseInt(document.getElementById("txtYear").value) * 12;
+            var EMI =  P * r / (1- (Math.pow(1/(1 + r), n)));
+            document.getElementById("result").innerHTML = `EMI Amuont &#8377; ${Math.round(EMI)}`;
+        }
+    </script>
 </head>
 <body class="container-fluid">
     <div class="cont">
@@ -101,23 +119,6 @@
         <h1 id="result" class="text-center"></h1>
     </div>
 
-    <script>
-        function AmountChanged(){
-            document.getElementById("txtAmount").value =document.getElementById("rangeAmount").value;
-        }
-        function YearChanged(){
-            document.getElementById("txtYear").value =document.getElementById("rangeYear").value;
-        }
-        function RateChanged(){
-            document.getElementById("txtRate").value =document.getElementById("rangeRate").value;
-        }
-        function CalculateClick(){
-            var P = parseInt(document.getElementById("txtAmount").value);
-            var r = parseInt(document.getElementById("txtRate").value)/12/100;
-            var n = parseInt(document.getElementById("txtYear").value) * 12;
-            var EMI =  P * r / (1- (Math.pow(1/(1 + r), n)));
-            document.getElementById("result").innerHTML = `EMI Amuont &#8377; ${Math.round(EMI)}`;
-        }
-    </script>
+    
  </body>
 </html>
